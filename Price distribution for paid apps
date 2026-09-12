@@ -1,0 +1,23 @@
+paid_apps = apps[apps["Price"] > 0]
+
+paid_apps["Price"].describe()
+plt.figure(figsize=(10, 6))
+
+sns.histplot(
+    paid_apps["Price"],
+    bins=30
+)
+
+plt.title("Price Distribution of Paid Apps")
+plt.xlabel("Price ($)")
+plt.ylabel("Number of Apps")
+plt.show()
+plt.figure(figsize=(10, 6))
+
+sns.boxplot(
+    x=paid_apps["Price"]
+)
+
+plt.title("Distribution of Paid App Prices")
+plt.xlabel("Price ($)")
+plt.show()
