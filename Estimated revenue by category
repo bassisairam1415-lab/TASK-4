@@ -1,0 +1,21 @@
+apps["Estimated_Revenue"] = (
+    apps["Price"] * apps["Installs"]
+)
+category_revenue = (
+    apps.groupby("Category")["Estimated_Revenue"]
+    .sum()
+    .sort_values(ascending=False)
+)
+
+category_revenue.head(10)
+plt.figure(figsize=(14, 8))
+
+sns.barplot(
+    x=category_revenue.head(15).values,
+    y=category_revenue.head(15).index
+)
+
+plt.title("Top Categories by Estimated Revenue")
+plt.xlabel("Estimated Revenue ($)")
+plt.ylabel("Category")
+plt.show()
