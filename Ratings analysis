@@ -1,0 +1,45 @@
+plt.figure(figsize=(10, 6))
+
+sns.histplot(
+    apps["Rating"].dropna(),
+    bins=20,
+    kde=True
+)
+
+plt.title("Distribution of App Ratings")
+plt.xlabel("Rating")
+plt.ylabel("Number of Apps")
+plt.show()
+apps["Rating"].mean()
+category_rating = (
+    apps.groupby("Category")["Rating"]
+    .mean()
+    .sort_values(ascending=False)
+)
+
+print(category_rating)
+plt.figure(figsize=(14, 8))
+
+sns.barplot(
+    x=category_rating.values,
+    y=category_rating.index
+)
+
+plt.title("Average App Rating by Category")
+plt.xlabel("Average Rating")
+plt.ylabel("Category")
+plt.xlim(0, 5)
+plt.show()
+category_stats = (
+    apps.groupby("Category")
+    .agg(
+        avg_rating=("Rating", "mean"),
+        app_count=("App", "count")
+    )
+)
+
+category_stats = category_stats[
+    category_stats["app_count"] >= 20
+].sort_values("avg_rating", ascending=False)
+
+category_stats.head(10)
