@@ -1,0 +1,18 @@
+plt.figure(figsize=(8, 5))
+
+sns.countplot(
+    data=review_data,
+    x="Sentiment_New"
+)
+
+plt.title("User Review Sentiment Distribution")
+plt.xlabel("Sentiment")
+plt.ylabel("Number of Reviews")
+plt.show()
+sentiment_percentage = (
+    review_data["Sentiment_New"]
+    .value_counts(normalize=True)
+    * 100
+)
+
+print(sentiment_percentage)
