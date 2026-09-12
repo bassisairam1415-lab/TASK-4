@@ -1,0 +1,23 @@
+10,000+
+100,000+
+1,000,000+
+apps["Installs"] = (
+    apps["Installs"]
+    .str.replace(",", "", regex=False)
+    .str.replace("+", "", regex=False)
+    .astype(int)
+)
+appapps["Price"] = (
+    apps["Price"]
+    .str.replace("$", "", regex=False)
+    .astype(float)
+)s["Installs"].head()
+apps["Reviews"] = pd.to_numeric(
+    apps["Reviews"],
+    errors="coerce"
+)
+apps["Rating"] = pd.to_numeric(
+    apps["Rating"],
+    errors="coerce"
+)
+apps[["Rating", "Reviews", "Installs", "Price"]].describe()
