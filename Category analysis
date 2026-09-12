@@ -1,0 +1,15 @@
+category_counts = apps["Category"].value_counts()
+
+print(category_counts)
+plt.figure(figsize=(14, 7))
+
+sns.barplot(
+    x=category_counts.values,
+    y=category_counts.index
+)
+
+plt.title("Number of Apps by Category")
+plt.xlabel("Number of Apps")
+plt.ylabel("Category")
+plt.show()
+category_counts.head(10)
