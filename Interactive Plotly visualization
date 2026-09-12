@@ -1,0 +1,25 @@
+category_plot = (
+    apps.groupby("Category")
+    .agg(
+        Apps=("App", "count"),
+        Avg_Rating=("Rating", "mean"),
+        Installs=("Installs", "sum"),
+        Revenue=("Estimated_Revenue", "sum")
+    )
+    .reset_index()
+)
+fig = px.scatter(
+    category_plot,
+    x="Apps",
+    y="Avg_Rating",
+    size="Installs",
+    color="Revenue",
+    hover_name="Category",
+    title="Category Competition vs Rating and Installs",
+    labels={
+        "Apps": "Number of Apps",
+        "Avg_Rating": "Average Rating"
+    }
+)
+
+fig.show()
