@@ -1,0 +1,49 @@
+1. Project Introduction
+   └── Objective
+   └── Dataset description
+
+2. Import Libraries
+
+3. Load Datasets
+   └── Apps dataset
+   └── Reviews dataset
+
+4. Data Cleaning
+   └── Missing values
+   └── Duplicates
+   └── Data types
+   └── Installs
+   └── Price
+   └── Size
+
+5. Exploratory Data Analysis
+   ├── Category distribution
+   ├── Rating distribution
+   ├── Average rating by category
+   ├── Size vs installs
+   └── Correlation
+
+6. Pricing Analysis
+   ├── Free vs paid
+   ├── Price distribution
+   └── Estimated revenue
+
+7. Sentiment Analysis
+   ├── Clean reviews
+   ├── TextBlob/VADER
+   ├── Positive
+   ├── Negative
+   └── Neutral
+
+8. Sentiment by Category
+
+9. Interactive Plotly Visualization
+
+10. Developer Opportunity Analysis
+
+11. Key Findings
+    ├── Insight 1
+    ├── Insight 2
+    └── Insight 3
+
+12. Conclusion
