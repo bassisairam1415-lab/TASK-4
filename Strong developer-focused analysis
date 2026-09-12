@@ -1,0 +1,32 @@
+developer_analysis = (
+    apps.groupby("Category")
+    .agg(
+        app_count=("App", "count"),
+        avg_rating=("Rating", "mean"),
+        total_installs=("Installs", "sum"),
+        avg_price=("Price", "mean")
+    )
+    .reset_index()
+)
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+
+developer_analysis[
+    ["competition_score",
+     "rating_score",
+     "demand_score"]
+] = scaler.fit_transform(
+    developer_analysis[
+        ["app_count", "avg_rating", "total_installs"]
+    ]
+)
+developer_analysis["opportunity_score"] = (
+    developer_analysis["demand_score"] * 0.4
+    + developer_analysis["rating_score"] * 0.3
+    - developer_analysis["competition_score"] * 0.3
+)
+developer_analysis.sort_values(
+    "opportunity_score",
+    ascending=False
+).head(10)
