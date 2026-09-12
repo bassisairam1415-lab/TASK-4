@@ -1,0 +1,9 @@
+apps = pd.read_csv("googleplaystore.csv")
+reviews = pd.read_csv("googleplaystore_user_reviews.csv")
+
+print("Apps dataset:", apps.shape)
+print("Reviews dataset:", reviews.shape)
+apps.head()
+reviews.head()
+apps.info()
+reviews.info()
