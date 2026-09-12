@@ -1,0 +1,19 @@
+reviews.head()
+reviews[["App", "Translated_Review", "Sentiment"]].head()
+review_data = reviews.dropna(
+    subset=["Translated_Review"]
+).copy()
+def get_sentiment(text):
+    polarity = TextBlob(str(text)).sentiment.polarity
+
+    if polarity > 0:
+        return "Positive"
+    elif polarity < 0:
+        return "Negative"
+    else:
+        return "Neutral"
+review_data["Sentiment_New"] = (
+    review_data["Translated_Review"]
+    .apply(get_sentiment)
+)
+review_data["Sentiment_New"].value_counts()
