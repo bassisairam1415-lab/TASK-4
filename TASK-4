@@ -1,0 +1,13 @@
+TASK-4/
+├── README.md (enhanced with project details)
+├── data/
+│   ├── googleplaystore.csv
+│   └── googleplaystore_user_reviews.csv
+├── notebooks/
+│   └── analysis.ipynb
+├── src/
+│   ├── data_cleaning.py
+│   ├── analysis.py
+│   └── sentiment_analysis.py
+├── requirements.txt
+└── visualizations/ (output folder)
