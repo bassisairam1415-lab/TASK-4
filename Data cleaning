@@ -1,0 +1,15 @@
+print("Missing values in Apps:")
+print(apps.isnull().sum())
+
+print("\nMissing values in Reviews:")
+print(reviews.isnull().sum())
+plt.figure(figsize=(12, 6))
+sns.heatmap(apps.isnull(), cbar=False)
+plt.title("Missing Values in Google Play Store Dataset")
+plt.show()
+print("Duplicates before:", apps.duplicated().sum())
+
+apps = apps.drop_duplicates()
+
+print("Duplicates after:", apps.duplicated().sum())
+apps = apps.drop_duplicates(subset="App", keep="first")
