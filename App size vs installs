@@ -1,0 +1,37 @@
+19M
+14M
+2.3M
+Varies with device
+def convert_size(size):
+    if isinstance(size, str):
+        if size.endswith("M"):
+            return float(size[:-1])
+        elif size.endswith("k"):
+            return float(size[:-1]) / 1024
+    return np.nan
+
+apps["Size_MB"] = apps["Size"].apply(convert_size)
+size_install = apps.dropna(
+    subset=["Size_MB", "Installs"]
+)
+plt.figure(figsize=(10, 6))
+
+sns.scatterplot(
+    data=size_install,
+    x="Size_MB",
+    y="Installs",
+    alpha=0.4
+)
+
+plt.xscale("log")
+plt.yscale("log")
+
+plt.title("App Size vs Number of Installs")
+plt.xlabel("App Size (MB)")
+plt.ylabel("Number of Installs")
+plt.show()
+correlation = size_install[
+    ["Size_MB", "Installs"]
+].corr()
+
+print(correlation)
