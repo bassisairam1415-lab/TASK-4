@@ -1,0 +1,18 @@
+apps["App_Type"] = np.where(
+    apps["Price"] > 0,
+    "Paid",
+    "Free"
+)
+apps["App_Type"].value_counts()
+plt.figure(figsize=(7, 5))
+
+sns.countplot(
+    data=apps,
+    x="App_Type"
+)
+
+plt.title("Free vs Paid Apps")
+plt.xlabel("App Type")
+plt.ylabel("Number of Apps")
+plt.show()
+apps["App_Type"].value_counts(normalize=True) * 100
