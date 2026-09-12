@@ -1,0 +1,27 @@
+review_category = review_data.merge(
+    apps[["App", "Category"]],
+    on="App",
+    how="left"
+)
+sentiment_by_category = pd.crosstab(
+    review_category["Category"],
+    review_category["Sentiment_New"],
+    normalize="index"
+) * 100
+
+sentiment_by_category.sort_values(
+    "Positive",
+    ascending=False
+).head(10)
+positive_categories = (
+    sentiment_by_category
+    .sort_values("Positive", ascending=False)
+)
+
+positive_categories[["Positive"]].head(10)
+negative_categories = (
+    sentiment_by_category
+    .sort_values("Negative", ascending=False)
+)
+
+negative_categories[["Negative"]].head(10)
